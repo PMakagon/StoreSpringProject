@@ -8,6 +8,6 @@ import java.util.Collection;
 public interface StoreService {
 
 Product addProduct(int id);
-Collection<Product> getProduct(Order order);
+Collection<Product> getProduct();
 Product deleteProduct(int id);
 }

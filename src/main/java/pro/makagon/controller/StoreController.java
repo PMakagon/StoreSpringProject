@@ -1,13 +1,11 @@
 package pro.makagon.controller;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.context.annotation.Primary;
+import org.springframework.web.bind.annotation.*;
 import pro.makagon.data.Order;
 import pro.makagon.data.Product;
 import pro.makagon.service.StoreService;
-
 import java.util.Collection;
 
 
@@ -21,19 +19,24 @@ public class StoreController {
         this.StoreService = StoreService;
     }
 
-@Bean
-@GetMapping("/store/new_order")
-public Order createOrder(){
-    return new Order();
-}
+//    http://localhost:8080/store/order/add?1
+//    http://localhost:8080/store/order/get
 
-@GetMapping("/store/order/add")
-public Product addProduct(int id){
+
+//@Bean
+//@GetMapping("/order")
+//@ResponseBody
+//public Order createOrder(){
+//    return new Order ();
+//}
+
+@GetMapping("/order/add")
+public Product addProduct(@RequestParam int id){
     return StoreService.addProduct(id);
 }
-@GetMapping("/store/order/get")
-public Collection<Product> getProduct(Order order){
-    return StoreService.getProduct(order);
+@GetMapping("/order/get")
+public Collection<Product> getProduct(){
+    return StoreService.getProduct();
 }
 
 }

@@ -12,7 +12,7 @@ public class StoreServiceImpl implements StoreService {
     
     public final Order Order;
 
-    public StoreServiceImpl(@Qualifier("createOrder") Order Order) {
+    public StoreServiceImpl( Order Order) {
         this.Order = Order;
     }
 
@@ -24,8 +24,8 @@ public class StoreServiceImpl implements StoreService {
     }
 
     @Override
-    public Collection<Product> getProduct(Order order) {
-        return order.productList.values();
+    public Collection<Product> getProduct() {
+        return Order.productList.values();
     }
 
 

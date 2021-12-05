@@ -1,11 +1,15 @@
 package pro.makagon.service;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 import pro.makagon.data.Order;
 import pro.makagon.data.Product;
 import java.util.Collection;
+import java.util.List;
 
 @Service
+//@Scope(scopeName = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class StoreServiceImpl implements StoreService {
     
     public final Order Order;
@@ -16,14 +20,16 @@ public class StoreServiceImpl implements StoreService {
 
 
     @Override
-    public Product addProduct(int id) {
-        Order.productList.put(id,new Product(id));
-        return Order.productList.get(id);
+    public List<Integer> addProduct(List<Integer> id) {
+        for(Integer integer:id){
+            Order.addToOrder(new Product(integer));
+        }
+        return id;
     }
 
     @Override
     public Collection<Product> getProduct() {
-        return Order.productList.values();
+        return Order.getOrder();
     }
 
 

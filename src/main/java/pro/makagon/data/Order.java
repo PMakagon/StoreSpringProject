@@ -7,25 +7,35 @@ import org.springframework.web.context.annotation.SessionScope;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-@Primary
+//@Primary
 @Component
-//@SessionScope
-@Scope("prototype")
+@SessionScope
+//@Scope("prototype")
 public class Order {
 
     public int key =0;
-    public Map<Integer,Product> productList = new HashMap<>();
+    public List<Product> productList = new ArrayList<>();
 
     public void setKey(int key) {
         this.key = key;
     }
 
+    public void addToOrder(Product product){
+        productList.add(product);
+    }
+
+    public List<Product> getOrder(){
+        return productList;
+    }
+
     @PostConstruct
     public void initOrder(){
-        productList.put(1,new Product(1));
+        productList.add(new Product(1));
         System.out.println("Корзина " + key + " создана");
     }
 

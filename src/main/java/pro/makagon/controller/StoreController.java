@@ -7,6 +7,7 @@ import pro.makagon.data.Order;
 import pro.makagon.data.Product;
 import pro.makagon.service.StoreService;
 import java.util.Collection;
+import java.util.List;
 
 
 @RestController
@@ -23,16 +24,16 @@ public class StoreController {
 //    http://localhost:8080/store/order/get
 
 
-@Bean
-@GetMapping("/new_order")
-@ResponseBody
-public Order createOrder(){
-    return new Order ();
-
-}
+//@Bean
+//@GetMapping("/new_order")
+//@ResponseBody
+//public Order createOrder(){
+//    return new Order ();
+//
+//}
 
 @GetMapping("/add")
-public Product addProduct(@RequestParam int id){
+public List<Integer> addProduct(@RequestParam List<Integer> id){
     return StoreService.addProduct(id);
 }
 @GetMapping("/get")

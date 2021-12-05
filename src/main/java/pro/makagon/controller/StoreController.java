@@ -10,7 +10,7 @@ import java.util.Collection;
 
 
 @RestController
-@RequestMapping("/store")
+@RequestMapping("/order")
 public class StoreController {
 
     private final StoreService StoreService;
@@ -19,22 +19,23 @@ public class StoreController {
         this.StoreService = StoreService;
     }
 
-//    http://localhost:8080/store/order/add?1
+//    http://localhost:8080/store/order/add?id=2
 //    http://localhost:8080/store/order/get
 
 
-//@Bean
-//@GetMapping("/order")
-//@ResponseBody
-//public Order createOrder(){
-//    return new Order ();
-//}
+@Bean
+@GetMapping("/new_order")
+@ResponseBody
+public Order createOrder(){
+    return new Order ();
 
-@GetMapping("/order/add")
+}
+
+@GetMapping("/add")
 public Product addProduct(@RequestParam int id){
     return StoreService.addProduct(id);
 }
-@GetMapping("/order/get")
+@GetMapping("/get")
 public Collection<Product> getProduct(){
     return StoreService.getProduct();
 }

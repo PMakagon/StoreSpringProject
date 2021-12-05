@@ -1,10 +1,8 @@
 package pro.makagon.service;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import pro.makagon.data.Order;
 import pro.makagon.data.Product;
-
 import java.util.Collection;
 
 @Service

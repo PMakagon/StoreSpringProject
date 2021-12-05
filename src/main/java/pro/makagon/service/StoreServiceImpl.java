@@ -1,7 +1,5 @@
 package pro.makagon.service;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 import pro.makagon.data.Order;
 import pro.makagon.data.Product;
@@ -9,7 +7,6 @@ import java.util.Collection;
 import java.util.List;
 
 @Service
-//@Scope(scopeName = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class StoreServiceImpl implements StoreService {
     
     public final Order Order;

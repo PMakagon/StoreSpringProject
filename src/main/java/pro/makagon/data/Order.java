@@ -35,7 +35,7 @@ public class Order {
 
     @PostConstruct
     public void initOrder(){
-        productList.add(new Product(1));
+//        productList.add(new Product(1));
         System.out.println("Корзина " + key + " создана");
     }
 

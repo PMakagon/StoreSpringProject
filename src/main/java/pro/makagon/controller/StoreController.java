@@ -27,8 +27,10 @@ public class StoreController {
 //@Bean
 //@GetMapping("/new_order")
 //@ResponseBody
-//public Order createOrder(){
-//    return new Order ();
+//public void createOrder(){
+//        Order order = new Order();
+//        int key= order.key++;
+//        System.out.println("Корзина " + key + " создана");
 //
 //}
 

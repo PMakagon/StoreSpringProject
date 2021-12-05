@@ -1,8 +1,6 @@
 package pro.makagon.service;
 
-import pro.makagon.data.Order;
 import pro.makagon.data.Product;
-
 import java.util.Collection;
 import java.util.List;
 

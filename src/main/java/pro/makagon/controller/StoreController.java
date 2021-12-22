@@ -14,15 +14,15 @@ import java.util.List;
 @RequestMapping("/order")
 public class StoreController {
 
-    private final StoreService StoreService;
+    private final StoreService storeService;
 
-    public StoreController(StoreService StoreService) {
-        this.StoreService = StoreService;
+    public StoreController(StoreService storeService) {
+        this.storeService = storeService;
     }
 
 //    http://localhost:8080/store/order/add?id=2
 //    http://localhost:8080/store/order/get
-
+//    http://localhost:8080/store/order/add?id=6&id=4
 
 //@Bean
 //@GetMapping("/new_order")
@@ -35,12 +35,12 @@ public class StoreController {
 //}
 
 @GetMapping("/add")
-public List<Integer> addProduct(@RequestParam List<Integer> id){
-    return StoreService.addProduct(id);
+public Collection<Product> addProduct(@RequestParam List<Integer> id){
+    return storeService.addProduct(id);
 }
 @GetMapping("/get")
 public Collection<Product> getProduct(){
-    return StoreService.getProduct();
+    return storeService.getProduct();
 }
 
 }

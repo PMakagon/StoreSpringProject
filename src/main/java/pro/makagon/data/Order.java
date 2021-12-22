@@ -8,39 +8,50 @@ import org.springframework.web.context.annotation.SessionScope;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
 
 //@Primary
 @Component
 @SessionScope
-//@Scope("prototype")
 public class Order {
 
-    public int key =0;
-    public List<Product> productList = new ArrayList<>();
+    private final List<Product> productList = new ArrayList<>();
 
-    public void setKey(int key) {
-        this.key = key;
+    public Product addToOrder(Product product){
+         productList.add(product);
+        return product;
     }
 
-    public void addToOrder(Product product){
-        productList.add(product);
+    public Product deleteProduct(int id) {
+        return productList.remove(id);
     }
 
     public List<Product> getOrder(){
-        return productList;
+        return Collections.unmodifiableList(productList);
     }
+
+    public List<Product> addAll (List<Integer> id){
+       return id.stream()
+               .map(Product::new)
+               .map(this::addToOrder)
+               .collect(Collectors.toList());
+    }
+
 
     @PostConstruct
     public void initOrder(){
-//        productList.add(new Product(1));
-        System.out.println("Корзина " + key + " создана");
+        productList.add(new Product(1));
+//        System.out.println("Корзина " + key + " создана");
     }
+//
+//    @PreDestroy
+//    public void destroyOrder(){
+//        System.out.println("Корзина " + key + " удалена");
+//    }
 
-    @PreDestroy
-    public void destroyOrder(){
-        System.out.println("Корзина " + key + " удалена");
-    }
 }

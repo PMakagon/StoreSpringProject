@@ -9,29 +9,26 @@ import java.util.List;
 @Service
 public class StoreServiceImpl implements StoreService {
     
-    public final Order Order;
+    public final Order order;
 
-    public StoreServiceImpl( Order Order) {
-        this.Order = Order;
+    public StoreServiceImpl( Order order) {
+        this.order = order;
     }
-
 
     @Override
-    public List<Integer> addProduct(List<Integer> id) {
-        for(Integer integer:id){
-            Order.addToOrder(new Product(integer));
-        }
-        return id;
+    public Collection<Product> addProduct(List<Integer> id) {
+        return order.addAll(id);
     }
+
 
     @Override
     public Collection<Product> getProduct() {
-        return Order.getOrder();
+        return order.getOrder();
     }
 
 
     @Override
     public Product deleteProduct(int id) {
-        return Order.productList.remove(id);
+        return order.deleteProduct(id);
     }
 }

@@ -43,11 +43,11 @@ public class Order {
     }
 
 
-    @PostConstruct
-    public void initOrder(){
-        productList.add(new Product(1));
-//        System.out.println("Корзина " + key + " создана");
-    }
+//    @PostConstruct
+//    public void initOrder(){
+//        productList.add(new Product(1));
+////        System.out.println("Корзина " + key + " создана");
+//    }
 //
 //    @PreDestroy
 //    public void destroyOrder(){

@@ -35,8 +35,8 @@ public class Order {
         return Collections.unmodifiableList(productList);
     }
 
-    public List<Product> addAll (List<Integer> id){
-       return id.stream()
+    public List<Product> addAll (List<Integer> ids){
+       return ids.stream()
                .map(Product::new)
                .map(this::addToOrder)
                .collect(Collectors.toList());
